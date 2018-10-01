@@ -1,0 +1,16 @@
+{
+	"name": "pulumi-azure-devops",
+	"devDependencies": {
+		"@types/node": "latest",
+		"tslint": "^5.11.0",
+		"typescript": "^3.1.1"
+	},
+	"dependencies": {
+		"@pulumi/pulumi": "latest",
+		"@pulumi/aws": "latest"
+	},
+	"scripts": {
+		"build": "tsc",
+		"lint": "tslint --project ."
+	}
+}

@@ -1,0 +1,9 @@
+name: pulumi-azure-devops
+runtime: nodejs
+description: Run Pulumi inside Azure DevOps Pipelines
+template:
+  description: A minimal AWS TypeScript Pulumi program
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-1
