@@ -1,4 +1,14 @@
 jobs:
+        - job: PrintInfo
+          steps:
+                  - script: |
+                          echo $(System.PullRequest.PullRequestNumber)
+                          echo $(System.PullRequest.PullRequestId)
+                          echo $(System.PullRequest.IsFork)
+                          echo $(System.PullRequest.TargetBranch)
+                          echo $(Build.SourceVersionMessage)
+                          echo $(Build.RequestedFor)
+
         - job: BuildPullRequest
           condition: eq(variables['Build.Reason'], 'PullRequest')
           steps:
