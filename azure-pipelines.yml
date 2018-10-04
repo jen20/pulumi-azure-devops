@@ -1,11 +1,3 @@
-name: Run Pulumi
-trigger:
-        batch: true
-        branches:
-                include:
-                        - master
-                        - production
-
 jobs:
         - job: PrintInfo
           steps:
