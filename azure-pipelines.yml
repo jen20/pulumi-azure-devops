@@ -1,18 +1,28 @@
 jobs:
+        - job: PrintInfo
+          steps:
+                  - script: |
+                          echo $(System.PullRequest.PullRequestNumber)
+                          echo $(System.PullRequest.PullRequestId)
+                          echo $(System.PullRequest.IsFork)
+                          echo $(System.PullRequest.TargetBranch)
+                          echo $(Build.SourceVersionMessage)
+                          echo $(Build.RequestedFor)
+
         - job: BuildPullRequest
+          condition: eq(variables['Build.Reason'], 'PullRequest')
           steps:
                   - script: echo "Building a PR!"
-                    condition: eq(variables['Build.Reason'], 'PullRequest')
                   - script: env
 
         - job: BuildStaging
+          condition: eq(variables['Build.SourceBranch'], 'refs/heads/master') 
           steps:
                   - script: echo "Building for staging (master branch)!"
-                    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master') 
                   - script: env
 
         - job: BuildProduction
+          condition: eq(variables['Build.SourceBranch'], 'refs/heads/production') 
           steps:
                   - script: echo "Building for production (production branch)!"
-                    condition: eq(variables['Build.SourceBranch'], 'refs/heads/production') 
                   - script: env
