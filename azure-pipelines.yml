@@ -10,12 +10,14 @@ jobs:
         - job: PrintInfo
           steps:
                   - script: |
+                          echo "This is only a branch, this should never run"
                           echo $(System.PullRequest.PullRequestNumber)
                           echo $(System.PullRequest.PullRequestId)
                           echo $(System.PullRequest.IsFork)
                           echo $(System.PullRequest.TargetBranch)
                           echo $(Build.SourceVersionMessage)
                           echo $(Build.RequestedFor)
+                          exit 1
 
         - job: BuildPullRequest
           condition: eq(variables['Build.Reason'], 'PullRequest')
