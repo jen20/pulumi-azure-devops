@@ -1,3 +1,11 @@
+triggers:
+        - name: Staging
+          trigger:
+                  - master
+        - name: Production
+          trigger:
+                  - production
+
 jobs:
         - job: PrintInfo
           steps:
